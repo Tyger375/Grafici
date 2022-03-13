@@ -38,11 +38,11 @@ def grafico2(esperimento):
     yerr = data["Ec"]
 
     if esperimento == 1:
-        grafico = Grafico(size=(Vector2D(0, 0), Vector2D(15, 15)), title="l0 = 7cm")#, xticks=1, yticks=5)
+        grafico = Grafico(size=(Vector2D(0, 0), Vector2D(15, 15)), title="l0 = 7cm", debug=True)#, xticks=1, yticks=5)
         grafico.set_x_interval(array=np.arange(0, 16, 2))
         grafico.set_y_interval(array=np.arange(0, 16, 2))
     else:
-        grafico = Grafico(size=(Vector2D(0, 0), Vector2D(15, 25)), title="l0 = 7cm")#, xticks=1, yticks=5)
+        grafico = Grafico(size=(Vector2D(0, 0), Vector2D(15, 25)), title="l0 = 7cm", debug=True)#, xticks=1, yticks=5)
         grafico.set_x_interval(array=np.arange(0, 16, 2))
         grafico.set_y_interval(array=np.arange(0, 26, 2))
     grafico.set_xlabel("x (cm)")
@@ -56,7 +56,7 @@ def grafico2(esperimento):
     grafico.fit(arrayx, arrayy)
     grafico.plot(x, y, "xyerrorbars", size=100, errx=xerr, erry=yerr)
     #grafico.set_grid(True)
-    grafico.save(f"./Pesi/results/esperimento{esperimento}/grafico2")
+    #grafico.save(f"./Pesi/results/esperimento{esperimento}/grafico2")
 
-grafico1(2)
+#grafico1(2)
 grafico2(2)

@@ -25,7 +25,8 @@ class Vector2D():
 
 
 class Grafico:
-    def __init__(self, size:list[Vector2D], xticks=0.1, yticks=0.1, title=None):
+    def __init__(self, size:list[Vector2D], xticks=0.1, yticks=0.1, title=None, debug=False):
+        self.debug = debug
         fig, ax = plt.subplots()
         self.fig = fig
         self.ax = ax
@@ -78,11 +79,15 @@ class Grafico:
 
     def save(self, nomefile="grafico.png"):
         self.fig.savefig(nomefile)
+        if self.debug:
+            print("Image saved")
         # plt.show()
 
     def punta_coda(self, vectors:list[Vector2D]):
         sommavettori = Vector2D()
         for vettore in vectors:
+            if self.debug:
+                print(vettore)
             self.add_arrow(vettore, sommavettori)
             sommavettori += vettore
         self.add_arrow(sommavettori)
@@ -91,7 +96,8 @@ class Grafico:
         primovettore = None
         sommavettori = Vector2D()
         for vettore in vectors:
-            print(vettore)
+            if self.debug:
+                print(vettore)
             if not primovettore:
                 primovettore = vettore
             else:
@@ -124,6 +130,8 @@ class Grafico:
         y = np.array(y)
 
         a, b = np.polyfit(x, y, 1)
+        if self.debug:
+            print(f"fit with values of: {a}, {b}\nplotting with (x, a*x+b)")
 
         self.plot(x, a*x+b)
 
