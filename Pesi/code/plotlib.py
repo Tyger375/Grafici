@@ -73,7 +73,7 @@ class Grafico:
 
     def set_grid(self, grid):
         if grid == True:
-            self.ax.grid(color='black', ls='-', lw=0.25)
+            self.ax.grid(color='black', ls='-.', lw=0.25)
         else:
             self.ax.grid(False)
 
